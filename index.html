@@ -267,9 +267,30 @@ html, body {
   box-shadow:3px 3px 0 #111;
 }
 
-/* MOBILE: hide side decoratives on very small screens */
+/* ═══════════ SYLVANIANS + COSMO (base) ═══════════ */
+.syl-cat,.syl-bear,.syl-bunny,.syl-hedgehog,.cosmo{
+  position:absolute; z-index:28; pointer-events:none;
+  filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));
+}
+.syl-cat    { top:155px; left:-55px;  width:175px; transform:rotate(-10deg); }
+.syl-bear   { top:145px; right:-55px; width:175px; transform:rotate(9deg);   }
+.syl-bunny  { top:305px; left:-55px;  width:165px; transform:rotate(-7deg);  }
+.syl-hedgehog{ top:315px; right:-55px; width:155px; transform:rotate(8deg);  }
+.cosmo { top:-25px; right:-35px; width:160px; transform:rotate(-8deg);
+         filter:drop-shadow(4px 6px 10px rgba(0,0,0,.35)); }
+
+/* ═══════════ POISE BACK FIX ═══════════ */
+.poise-back{ height:232px; display:flex; flex-direction:column; }
+.poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:cover; object-position:top center; display:block; }
+
+/* ═══════════ MOBILE ═══════════ */
 @media(max-width:520px){
-  .mw3,.mw4{display:none;}
+  .syl-cat    { width:90px;  left:-50px;  top:165px; }
+  .syl-bear   { width:90px;  right:-50px; top:155px; }
+  .syl-bunny  { width:85px;  left:-45px;  top:310px; }
+  .syl-hedgehog{ width:80px; right:-45px; top:320px; }
+  .cosmo      { width:85px;  right:-18px; top:-10px; }
+  .poise-wrap { left:-55px; }
 }
 </style>
 </head>
@@ -330,16 +351,11 @@ html, body {
     </div>
 
     <!-- ══ PNG DECORATIVES ══ -->
-    <img src="images/pngtree-eye-catching-cartoon-cosmopolitan-with-a-splash-of-color-png-image_15786710.png"
-         style="position:absolute;top:-25px;right:-35px;width:160px;transform:rotate(-8deg);z-index:28;pointer-events:none;filter:drop-shadow(4px 6px 10px rgba(0,0,0,.35));">
-    <img src="images/tumblr_05f9d449ca29c71809f0cde412f8bdcf_dae89604_400.png"
-         style="position:absolute;top:155px;left:-55px;width:175px;transform:rotate(-10deg);z-index:28;pointer-events:none;filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));">
-    <img src="images/tumblr_24929834a45bb97953080f89ed12e75a_9075a671_400.png"
-         style="position:absolute;top:145px;right:-55px;width:175px;transform:rotate(9deg);z-index:28;pointer-events:none;filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));">
-    <img src="images/tumblr_590a0c2eb9fd27d9513a93bbf898496c_28c0758d_400.png"
-         style="position:absolute;top:305px;left:-55px;width:165px;transform:rotate(-7deg);z-index:28;pointer-events:none;filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));">
-    <img src="images/tumblr_bb3aa0c071e5fe7b444bacbe43e29a7f_2a0cf8ff_400.png"
-         style="position:absolute;top:315px;right:-55px;width:155px;transform:rotate(8deg);z-index:28;pointer-events:none;filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));">
+    <img class="cosmo" src="images/pngtree-eye-catching-cartoon-cosmopolitan-with-a-splash-of-color-png-image_15786710.png" alt="">
+    <img class="syl-cat"      src="images/tumblr_05f9d449ca29c71809f0cde412f8bdcf_dae89604_400.png" alt="">
+    <img class="syl-bear"     src="images/tumblr_24929834a45bb97953080f89ed12e75a_9075a671_400.png" alt="">
+    <img class="syl-bunny"    src="images/tumblr_590a0c2eb9fd27d9513a93bbf898496c_28c0758d_400.png" alt="">
+    <img class="syl-hedgehog" src="images/tumblr_bb3aa0c071e5fe7b444bacbe43e29a7f_2a0cf8ff_400.png" alt="">
 
     <!-- ══ CONTENT ══ -->
     <div class="content">
