@@ -332,7 +332,15 @@ body.intro .poise-wrap, body.intro .disco-wrap,
 body.intro .mw, body.intro .tape, body.intro .check, body.intro .spark,
 body.intro .music-btn {
   opacity:0 !important;
+  visibility:hidden !important;
   pointer-events:none;
+}
+/* Decorations are visible only after intro ends */
+.syl-cat, .syl-bear, .syl-bunny, .syl-hedgehog,
+.cosmo, .rec-1, .rec-2, .rec-3,
+.poise-wrap, .disco-wrap,
+.mw, .tape, .check, .spark, .music-btn {
+  visibility: visible;
 }
 
 /* Emphasize core invitation content: title tags, name, 30, info */
@@ -367,7 +375,7 @@ body.intro #confetti     { opacity: 0; }
 #yt-player{position:fixed;bottom:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1;}
 </style>
 </head>
-<body>
+<body class="intro">
 
 <!-- MUSIC BUTTON + YOUTUBE IFRAME API (mobile-friendly) -->
 <div class="music-btn" id="music-btn" onclick="toggleMusic(event)" title="Play music">🎵</div>
