@@ -250,25 +250,21 @@ html, body {
 .razzles-dots{display:flex;gap:3px;justify-content:center;margin-top:3px;}
 .rdot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(0,0,0,.3);}
 
-50%{transform:rotate(11deg) translateY(-10px)}}
-
-
-
 /* ═══════════ SYLVANIANS + COSMO (base) ═══════════ */
 .syl-cat,.syl-bear,.syl-bunny,.syl-hedgehog,.cosmo{
   position:absolute; z-index:28; pointer-events:none;
   filter:drop-shadow(4px 6px 10px rgba(0,0,0,.3));
 }
-.syl-cat    { top:145px; left:-70px;  width:215px; transform:rotate(-10deg); }
-.syl-bear   { top:135px; right:-70px; width:215px; transform:rotate(9deg);   }
-.syl-bunny  { top:320px; left:-70px;  width:195px; transform:rotate(-7deg);  }
-.syl-hedgehog{ top:330px; right:-70px; width:185px; transform:rotate(8deg);  }
+.syl-cat    { top:90px;  left:-80px;  width:220px; transform:rotate(-10deg); }
+.syl-bear   { top:80px;  right:-80px; width:220px; transform:rotate(9deg);   }
+.syl-bunny  { top:560px; left:-80px;  width:205px; transform:rotate(-7deg);  }
+.syl-hedgehog{ top:570px; right:-80px; width:195px; transform:rotate(8deg);  }
 .cosmo { top:-25px; right:-35px; width:160px; transform:rotate(-8deg);
          filter:drop-shadow(4px 6px 10px rgba(0,0,0,.35)); }
 
 /* ═══════════ POISE BACK FIX ═══════════ */
 .poise-back{ height:275px; display:flex; flex-direction:column; }
-.poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:cover; object-position:top center; display:block; }
+.poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:contain; object-position:center; display:block; background:#111; }
 
 /* ═══════════ RECORTES (film cutouts — behind content) ═══════════ */
 .rec-1,.rec-2,.rec-3{
@@ -283,10 +279,10 @@ html, body {
 
 /* ═══════════ MOBILE ═══════════ */
 @media(max-width:520px){
-  .syl-cat    { width:110px; left:-55px;  top:160px; }
-  .syl-bear   { width:110px; right:-55px; top:150px; }
-  .syl-bunny  { width:100px; left:-50px;  top:330px; }
-  .syl-hedgehog{ width:95px;  right:-50px; top:340px; }
+  .syl-cat    { width:115px; left:-55px;  top:80px;  }
+  .syl-bear   { width:115px; right:-55px; top:80px;  }
+  .syl-bunny  { width:105px; left:-50px;  top:540px; }
+  .syl-hedgehog{ width:100px; right:-50px; top:550px; }
   .cosmo      { width:85px;  right:-18px; top:-10px; }
   .poise-wrap { left:50%; margin-left:-80px; bottom:-80px; }
   .poise-flip { width:160px; }
