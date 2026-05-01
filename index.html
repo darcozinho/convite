@@ -563,7 +563,7 @@ window.addEventListener('resize', fitCard);
 /* Invitation reveal — emphasize info, then zoom out to full layout */
 document.body.classList.add('intro');
 window.addEventListener('load', function(){
-  setTimeout(function(){ document.body.classList.remove('intro'); }, 6500);
+  setTimeout(function(){ document.body.classList.remove('intro'); }, 5000);
 });
 </script>
 
@@ -698,7 +698,7 @@ class P{
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
 // Start the continuous confetti loop AFTER the intro reveal
-setTimeout(loop, 6500);
+setTimeout(loop, 5000);
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -867,7 +867,7 @@ function launchBurst() {
 
 // Fire burst AFTER intro reveal, in sync with confetti loop start
 window.addEventListener('load', () => {
-  setTimeout(launchBurst, 6600);
+  setTimeout(launchBurst, 5100);
 });
 
 // letter hover wobble
