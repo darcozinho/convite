@@ -101,7 +101,7 @@ html, body {
   position:relative;
   z-index:10;
   display:flex; flex-direction:column; align-items:center;
-  padding:60px 24px 385px;
+  padding:60px 24px 400px;
   width:100%;
   gap:0;
 }
@@ -245,7 +245,7 @@ html, body {
 @keyframes twk{from{opacity:.3;transform:scale(.6) rotate(0deg)}to{opacity:1;transform:scale(1.4) rotate(30deg)}}
 
 /* ═══════════ FILM REFS (relative to card) ═══════════ */
-.poise-wrap{position:absolute;bottom:-60px;left:160px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
+.poise-wrap{position:absolute;bottom:10px;left:160px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
 .poise-flip{width:280px;transform:rotate(-4deg);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1);}
 .poise-wrap.flipped .poise-flip{transform:rotate(-4deg) rotateY(180deg);}
 .poise-front,.poise-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
@@ -264,12 +264,12 @@ html, body {
 .poise-back-photo{width:100%;display:block;object-fit:cover;}
 .poise-back-label{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:26px;font-weight:900;text-align:center;padding:8px;letter-spacing:1px;}
 
-.razzles-wrap{position:absolute;top:740px;left:155px;z-index:30;transform:rotate(-7deg);filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));}
-.razzles-inner{background:#7b2fff;border:3px solid #111;padding:6px 10px;box-shadow:4px 4px 0 #111;text-align:center;}
-.razzles-title{font-family:'Boogaloo',cursive;font-size:18px;color:#ffd93d;text-shadow:2px 2px 0 #111;letter-spacing:1px;}
-.razzles-sub{font-family:'Bebas Neue',sans-serif;font-size:7px;letter-spacing:1.5px;color:#e8d5f5;margin-top:2px;}
-.razzles-dots{display:flex;gap:3px;justify-content:center;margin-top:3px;}
-.rdot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(0,0,0,.3);}
+.razzles-wrap{position:absolute;top:670px;left:155px;z-index:30;transform:rotate(-7deg);filter:drop-shadow(2px 2px 0 rgba(0,0,0,.45));}
+.razzles-inner{background:#7b2fff;border:2.5px solid #111;padding:3px 7px;box-shadow:3px 3px 0 #111;text-align:center;}
+.razzles-title{font-family:'Boogaloo',cursive;font-size:14px;color:#ffd93d;text-shadow:1.5px 1.5px 0 #111;letter-spacing:.5px;line-height:1;}
+.razzles-sub{font-family:'Bebas Neue',sans-serif;font-size:6px;letter-spacing:1px;color:#e8d5f5;margin-top:1px;}
+.razzles-dots{display:flex;gap:2px;justify-content:center;margin-top:2px;}
+.rdot{width:5px;height:5px;border-radius:50%;border:1px solid rgba(0,0,0,.3);}
 
 /* ═══════════ SYLVANIANS + COSMO (base) ═══════════ */
 .syl-cat,.syl-bear,.syl-bunny,.syl-hedgehog,.cosmo{
@@ -305,7 +305,7 @@ html, body {
   .syl-bunny  { width:105px; left:-50px;  top:540px; }
   .syl-hedgehog{ width:100px; right:-50px; top:550px; }
   .cosmo      { width:85px;  right:-18px; top:-10px; }
-  .poise-wrap { left:50%; margin-left:-115px; bottom:-30px; }
+  .poise-wrap { left:50%; margin-left:-115px; bottom:10px; }
   .poise-flip { width:230px; }
   .poise-inner { width:230px; padding:7px; }
   .poise-header { font-size:34px; padding:3px 5px; }
@@ -314,7 +314,7 @@ html, body {
   .poise-cover-txt { font-size:14px; }
   .poise-back   { width:230px; height:280px; }
   .poise-back-label { font-size:20px; padding:6px; }
-  .razzles-wrap { top:730px; left:auto; bottom:auto; right:15px; }
+  .razzles-wrap { top:525px; left:55px; bottom:auto; right:auto; }
   .rec-1 { top:40px;  left:-10px; width:120px; border-width:5px; }
   .rec-2 { top:340px; right:-10px; width:110px; border-width:5px; }
   .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
@@ -325,53 +325,47 @@ html, body {
 .music-btn.playing{background:#7b2fff;animation:musicSpin 4s linear infinite;}
 @keyframes musicPulse{0%,100%{box-shadow:4px 4px 0 #111;}50%{box-shadow:4px 4px 0 #111,0 0 0 8px rgba(255,16,85,.25);}}
 @keyframes musicSpin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-#yt-audio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-9999px;}
+#yt-player{position:fixed;bottom:0;right:0;width:1px;height:1px;opacity:0;pointer-events:none;z-index:-1;}
 </style>
 </head>
 <body>
 
-<!-- MUSIC BUTTON + HIDDEN YOUTUBE -->
-<div class="music-btn" id="music-btn" onclick="toggleMusic()" title="Play music">🎵</div>
-<iframe id="yt-audio" src="" allow="autoplay" frameborder="0"></iframe>
+<!-- MUSIC BUTTON + YOUTUBE IFRAME API (mobile-friendly) -->
+<div class="music-btn" id="music-btn" onclick="toggleMusic(event)" title="Play music">🎵</div>
+<div id="yt-player"></div>
 <script>
-(function(){
-  var playing = false;
-  var btn = document.getElementById('music-btn');
-  var iframe = document.getElementById('yt-audio');
-  var YT_SRC = 'https://www.youtube.com/embed/3GwjfUFyY6M?autoplay=1&loop=1&playlist=3GwjfUFyY6M&controls=0&mute=0';
-  function startMusic(){
-    if(playing) return;
-    iframe.src = YT_SRC;
-    btn.textContent = '🔊';
-    btn.classList.add('playing');
-    playing = true;
-  }
-  function stopMusic(){
-    iframe.src = '';
-    btn.textContent = '🎵';
-    btn.classList.remove('playing');
-    playing = false;
-  }
-  window.toggleMusic = function(e){
-    if(e) e.stopPropagation();
-    if(!playing) startMusic(); else stopMusic();
-  };
-  // Try autoplay immediately (some browsers allow it)
-  window.addEventListener('load', function(){ setTimeout(startMusic, 200); });
-  // Fallback: start on first user interaction (click/touch anywhere)
-  function autoStart(){
-    startMusic();
-    document.removeEventListener('click', autoStart, true);
-    document.removeEventListener('touchstart', autoStart, true);
-    document.removeEventListener('keydown', autoStart, true);
-    document.removeEventListener('scroll', autoStart, true);
-  }
-  document.addEventListener('click', autoStart, {capture:true, once:true, passive:true});
-  document.addEventListener('touchstart', autoStart, {capture:true, once:true, passive:true});
-  document.addEventListener('keydown', autoStart, {capture:true, once:true, passive:true});
-  document.addEventListener('scroll', autoStart, {capture:true, once:true, passive:true});
-})();
+var ytPlayer = null;
+var ytReady = false;
+var pendingPlay = false;
+function onYouTubeIframeAPIReady(){
+  ytPlayer = new YT.Player('yt-player', {
+    height:'1', width:'1', videoId:'3GwjfUFyY6M',
+    playerVars:{autoplay:1, loop:1, playlist:'3GwjfUFyY6M', controls:0, modestbranding:1, playsinline:1},
+    events:{
+      onReady:function(e){ ytReady=true; e.target.playVideo(); if(pendingPlay) e.target.playVideo(); },
+      onStateChange:function(e){
+        var btn=document.getElementById('music-btn');
+        if(e.data===1){ btn.textContent='🔊'; btn.classList.add('playing'); }
+        else if(e.data===2){ btn.textContent='🎵'; btn.classList.remove('playing'); }
+      }
+    }
+  });
+}
+window.toggleMusic=function(e){
+  if(e) e.stopPropagation();
+  if(!ytReady){ pendingPlay=true; return; }
+  var s = ytPlayer.getPlayerState();
+  if(s===1) ytPlayer.pauseVideo(); else ytPlayer.playVideo();
+};
+// Try to play on first user gesture (mobile autoplay workaround)
+function _firstGesture(){
+  if(ytReady && ytPlayer.getPlayerState() !== 1){ ytPlayer.playVideo(); }
+  else { pendingPlay=true; }
+  ['click','touchstart','keydown','scroll'].forEach(function(ev){ document.removeEventListener(ev, _firstGesture, true); });
+}
+['click','touchstart','keydown','scroll'].forEach(function(ev){ document.addEventListener(ev, _firstGesture, {capture:true, passive:true}); });
 </script>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <!-- STRIPE BG -->
 <div class="bg">
