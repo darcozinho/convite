@@ -229,7 +229,7 @@ html, body {
 @keyframes twk{from{opacity:.3;transform:scale(.6) rotate(0deg)}to{opacity:1;transform:scale(1.4) rotate(30deg)}}
 
 /* ═══════════ FILM REFS (relative to card) ═══════════ */
-.poise-wrap{position:absolute;bottom:-45px;left:-80px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
+.poise-wrap{position:absolute;bottom:-130px;left:-10px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
 .poise-flip{width:210px;transform:rotate(6deg);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1);}
 .poise-wrap.flipped .poise-flip{transform:rotate(6deg) rotateY(180deg);}
 .poise-front,.poise-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
@@ -283,6 +283,15 @@ html, body {
 .poise-back{ height:232px; display:flex; flex-direction:column; }
 .poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:cover; object-position:top center; display:block; }
 
+/* ═══════════ RECORTES (film cutouts) ═══════════ */
+.rec-1,.rec-2,.rec-3{
+  position:absolute; z-index:24; pointer-events:none;
+  filter:drop-shadow(3px 4px 8px rgba(0,0,0,.4));
+}
+.rec-1 { top:30px;  left:8px;   width:108px; transform:rotate(-8deg); }
+.rec-2 { top:480px; right:6px;  width:98px;  transform:rotate(7deg);  }
+.rec-3 { top:480px; left:10px;  width:102px; transform:rotate(-6deg); }
+
 /* ═══════════ MOBILE ═══════════ */
 @media(max-width:520px){
   .syl-cat    { width:90px;  left:-50px;  top:165px; }
@@ -290,7 +299,10 @@ html, body {
   .syl-bunny  { width:85px;  left:-45px;  top:310px; }
   .syl-hedgehog{ width:80px; right:-45px; top:320px; }
   .cosmo      { width:85px;  right:-18px; top:-10px; }
-  .poise-wrap { left:-55px; }
+  .poise-wrap { left:-30px; bottom:-100px; }
+  .rec-1 { top:22px;  left:4px;  width:68px; }
+  .rec-2 { top:auto;  bottom:-15px; right:4px;  left:auto; width:62px; }
+  .rec-3 { display:none; }
 }
 </style>
 </head>
@@ -356,6 +368,11 @@ html, body {
     <img class="syl-bear"     src="images/tumblr_24929834a45bb97953080f89ed12e75a_9075a671_400.png" alt="">
     <img class="syl-bunny"    src="images/tumblr_590a0c2eb9fd27d9513a93bbf898496c_28c0758d_400.png" alt="">
     <img class="syl-hedgehog" src="images/tumblr_bb3aa0c071e5fe7b444bacbe43e29a7f_2a0cf8ff_400.png" alt="">
+
+    <!-- ══ FILM RECORTES ══ -->
+    <img class="rec-1" src="images/recorte_1.jpg"  alt="">
+    <img class="rec-2" src="images/recorte_2.avif" alt="">
+    <img class="rec-3" src="images/recorte_3.webp" alt="">
 
     <!-- ══ CONTENT ══ -->
     <div class="content">
