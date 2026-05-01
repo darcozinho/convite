@@ -321,10 +321,9 @@ html, body {
   .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
 }
 /* ═══════════ INTRO ANIMATION (invitation reveal) ═══════════ */
-/* Hide secondary elements during intro */
+/* Hide decorative elements during intro (keep core invitation info) */
 body.intro .syl-cat, body.intro .syl-bear, body.intro .syl-bunny, body.intro .syl-hedgehog,
 body.intro .cosmo, body.intro .rec-1, body.intro .rec-2, body.intro .rec-3,
-body.intro .name-row, body.intro .big30, body.intro .anos,
 body.intro .poise-wrap, body.intro .disco-wrap,
 body.intro .mw, body.intro .tape, body.intro .check, body.intro .spark,
 body.intro .music-btn {
@@ -332,10 +331,13 @@ body.intro .music-btn {
   pointer-events:none;
 }
 
-/* Emphasize: stag, film-tag, info-grid */
-body.intro .stag         { transform: scale(2.2) translateY(-12px); }
-body.intro .film-tag     { transform: scale(2.2) translateY(14px) rotate(-1.5deg); }
-body.intro .info-grid    { transform: scale(1.55) translateY(20px); }
+/* Emphasize core invitation content: title tags, name, 30, info */
+body.intro .stag         { transform: scale(1.5) translateY(-8px); }
+body.intro .film-tag     { transform: scale(1.5) translateY(8px) rotate(-1.5deg); }
+body.intro .name-row     { transform: scale(1.05); }
+body.intro .big30        { transform: scale(1.08); }
+body.intro .anos         { transform: scale(1.1); }
+body.intro .info-grid    { transform: scale(1.25) translateY(15px); }
 body.intro .stag,
 body.intro .film-tag,
 body.intro .info-grid    { z-index: 50; filter: drop-shadow(0 10px 30px rgba(0,0,0,.4)); }
@@ -348,7 +350,7 @@ body.intro #confetti     { opacity: 0; }
 .mw, .tape, .check, .spark, .music-btn {
   transition: opacity 1.5s ease-out;
 }
-.stag, .film-tag, .info-grid {
+.stag, .film-tag, .info-grid, .name-row, .big30, .anos {
   transition: transform 1.4s cubic-bezier(.34, 1.2, .3, 1), filter 1.2s ease;
 }
 
