@@ -101,7 +101,7 @@ html, body {
   position:relative;
   z-index:10;
   display:flex; flex-direction:column; align-items:center;
-  padding:60px 24px 300px;
+  padding:60px 24px 385px;
   width:100%;
   gap:0;
 }
@@ -264,7 +264,7 @@ html, body {
 .poise-back-photo{width:100%;display:block;object-fit:cover;}
 .poise-back-label{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:26px;font-weight:900;text-align:center;padding:8px;letter-spacing:1px;}
 
-.razzles-wrap{position:absolute;top:740px;left:50px;z-index:30;transform:rotate(-7deg);filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));}
+.razzles-wrap{position:absolute;top:740px;left:155px;z-index:30;transform:rotate(-7deg);filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));}
 .razzles-inner{background:#7b2fff;border:3px solid #111;padding:6px 10px;box-shadow:4px 4px 0 #111;text-align:center;}
 .razzles-title{font-family:'Boogaloo',cursive;font-size:18px;color:#ffd93d;text-shadow:2px 2px 0 #111;letter-spacing:1px;}
 .razzles-sub{font-family:'Bebas Neue',sans-serif;font-size:7px;letter-spacing:1.5px;color:#e8d5f5;margin-top:2px;}
@@ -338,19 +338,38 @@ html, body {
   var playing = false;
   var btn = document.getElementById('music-btn');
   var iframe = document.getElementById('yt-audio');
-  window.toggleMusic = function(){
-    if(!playing){
-      iframe.src = 'https://www.youtube.com/embed/3GwjfUFyY6M?autoplay=1&loop=1&playlist=3GwjfUFyY6M&controls=0';
-      btn.textContent = '🔊';
-      btn.classList.add('playing');
-      playing = true;
-    } else {
-      iframe.src = '';
-      btn.textContent = '🎵';
-      btn.classList.remove('playing');
-      playing = false;
-    }
+  var YT_SRC = 'https://www.youtube.com/embed/3GwjfUFyY6M?autoplay=1&loop=1&playlist=3GwjfUFyY6M&controls=0&mute=0';
+  function startMusic(){
+    if(playing) return;
+    iframe.src = YT_SRC;
+    btn.textContent = '🔊';
+    btn.classList.add('playing');
+    playing = true;
+  }
+  function stopMusic(){
+    iframe.src = '';
+    btn.textContent = '🎵';
+    btn.classList.remove('playing');
+    playing = false;
+  }
+  window.toggleMusic = function(e){
+    if(e) e.stopPropagation();
+    if(!playing) startMusic(); else stopMusic();
   };
+  // Try autoplay immediately (some browsers allow it)
+  window.addEventListener('load', function(){ setTimeout(startMusic, 200); });
+  // Fallback: start on first user interaction (click/touch anywhere)
+  function autoStart(){
+    startMusic();
+    document.removeEventListener('click', autoStart, true);
+    document.removeEventListener('touchstart', autoStart, true);
+    document.removeEventListener('keydown', autoStart, true);
+    document.removeEventListener('scroll', autoStart, true);
+  }
+  document.addEventListener('click', autoStart, {capture:true, once:true, passive:true});
+  document.addEventListener('touchstart', autoStart, {capture:true, once:true, passive:true});
+  document.addEventListener('keydown', autoStart, {capture:true, once:true, passive:true});
+  document.addEventListener('scroll', autoStart, {capture:true, once:true, passive:true});
 })();
 </script>
 
