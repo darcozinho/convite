@@ -85,7 +85,7 @@ html, body {
   position:relative;
   z-index:10;
   display:flex; flex-direction:column; align-items:center;
-  padding:60px 24px 40px;
+  padding:60px 24px 220px;
   width:100%;
   gap:0;
 }
@@ -229,19 +229,19 @@ html, body {
 @keyframes twk{from{opacity:.3;transform:scale(.6) rotate(0deg)}to{opacity:1;transform:scale(1.4) rotate(30deg)}}
 
 /* ═══════════ FILM REFS (relative to card) ═══════════ */
-.poise-wrap{position:absolute;bottom:-130px;left:-10px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
-.poise-flip{width:210px;transform:rotate(6deg);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1);}
-.poise-wrap.flipped .poise-flip{transform:rotate(6deg) rotateY(180deg);}
+.poise-wrap{position:absolute;bottom:-60px;left:160px;z-index:28;perspective:900px;cursor:pointer;touch-action:manipulation;}
+.poise-flip{width:280px;transform:rotate(-4deg);transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1);}
+.poise-wrap.flipped .poise-flip{transform:rotate(-4deg) rotateY(180deg);}
 .poise-front,.poise-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;}
-.poise-inner{background:#f5e8f0;border:3px solid #111;padding:6px;box-shadow:5px 5px 0 #111;width:210px;}
-.poise-header{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:34px;font-weight:900;letter-spacing:2px;text-align:center;padding:2px 4px;border-bottom:2px solid #111;}
-.poise-sub{font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;text-align:center;color:#555;margin:2px 0;}
-.poise-cover{background:linear-gradient(135deg,#ffd6e8,#a8edea);height:130px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;}
-.poise-cover-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#333;text-align:center;padding:4px;line-height:1.4;}
-.poise-cap{font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:1px;text-align:center;padding:3px;color:#ff1055;}
-.poise-back{position:absolute;top:0;left:0;width:210px;transform:rotateY(180deg);background:#111;border:3px solid #111;box-shadow:5px 5px 0 #ff1055;overflow:hidden;}
+.poise-inner{background:#f5e8f0;border:3px solid #111;padding:8px;box-shadow:7px 7px 0 #111;width:280px;}
+.poise-header{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:44px;font-weight:900;letter-spacing:2px;text-align:center;padding:4px 6px;border-bottom:2px solid #111;}
+.poise-sub{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;text-align:center;color:#555;margin:3px 0;}
+.poise-cover{background:linear-gradient(135deg,#ffd6e8,#a8edea);height:120px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;}
+.poise-cover-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#333;text-align:center;padding:4px;line-height:1.4;}
+.poise-cap{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;text-align:center;padding:4px;color:#ff1055;}
+.poise-back{position:absolute;top:0;left:0;width:280px;transform:rotateY(180deg);background:#111;border:3px solid #111;box-shadow:7px 7px 0 #ff1055;overflow:hidden;}
 .poise-back-photo{width:100%;display:block;object-fit:cover;}
-.poise-back-label{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;font-weight:900;text-align:center;padding:6px;letter-spacing:1px;}
+.poise-back-label{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:26px;font-weight:900;text-align:center;padding:8px;letter-spacing:1px;}
 
 .razzles-wrap{position:absolute;bottom:-15px;right:-8px;z-index:28;transform:rotate(-7deg);filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4));}
 .razzles-inner{background:#7b2fff;border:3px solid #111;padding:6px 10px;box-shadow:4px 4px 0 #111;text-align:center;}
@@ -253,19 +253,6 @@ html, body {
 50%{transform:rotate(11deg) translateY(-10px)}}
 
 
-/* ─── FOOTER ─── */
-.footer-msg{
-  font-family:'Pacifico',cursive; font-size:clamp(16px,4vw,20px);
-  color:#111; background:#fff;
-  padding:4px 16px; border:3px solid #111; box-shadow:4px 4px 0 #111;
-  display:inline-block; transform:rotate(-1deg); margin-bottom:12px;
-}
-.ftags{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;}
-.ftag{
-  border:2.5px solid #111; padding:4px 12px;
-  font-family:'Bebas Neue',sans-serif; font-size:clamp(11px,2.5vw,13px); letter-spacing:2px;
-  box-shadow:3px 3px 0 #111;
-}
 
 /* ═══════════ SYLVANIANS + COSMO (base) ═══════════ */
 .syl-cat,.syl-bear,.syl-bunny,.syl-hedgehog,.cosmo{
@@ -280,17 +267,19 @@ html, body {
          filter:drop-shadow(4px 6px 10px rgba(0,0,0,.35)); }
 
 /* ═══════════ POISE BACK FIX ═══════════ */
-.poise-back{ height:232px; display:flex; flex-direction:column; }
+.poise-back{ height:230px; display:flex; flex-direction:column; }
 .poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:cover; object-position:top center; display:block; }
 
-/* ═══════════ RECORTES (film cutouts) ═══════════ */
+/* ═══════════ RECORTES (film cutouts — behind content) ═══════════ */
 .rec-1,.rec-2,.rec-3{
-  position:absolute; z-index:24; pointer-events:none;
-  filter:drop-shadow(3px 4px 8px rgba(0,0,0,.4));
+  position:absolute; z-index:5; pointer-events:none;
+  border: 8px solid #fff;
+  box-shadow: 5px 8px 20px rgba(0,0,0,.55);
+  outline: 1.5px solid rgba(0,0,0,.12);
 }
-.rec-1 { top:30px;  left:8px;   width:108px; transform:rotate(-8deg); }
-.rec-2 { top:480px; right:6px;  width:98px;  transform:rotate(7deg);  }
-.rec-3 { top:480px; left:10px;  width:102px; transform:rotate(-6deg); }
+.rec-1 { top:55px;  left:-15px;  width:195px; transform:rotate(-9deg); }
+.rec-2 { top:400px; right:-15px; width:180px; transform:rotate(7deg);  }
+.rec-3 { top:410px; left:-15px;  width:190px; transform:rotate(-6deg); }
 
 /* ═══════════ MOBILE ═══════════ */
 @media(max-width:520px){
@@ -299,10 +288,18 @@ html, body {
   .syl-bunny  { width:85px;  left:-45px;  top:310px; }
   .syl-hedgehog{ width:80px; right:-45px; top:320px; }
   .cosmo      { width:85px;  right:-18px; top:-10px; }
-  .poise-wrap { left:-30px; bottom:-100px; }
-  .rec-1 { top:22px;  left:4px;  width:68px; }
-  .rec-2 { top:auto;  bottom:-15px; right:4px;  left:auto; width:62px; }
-  .rec-3 { display:none; }
+  .poise-wrap { left:50%; margin-left:-80px; bottom:-80px; }
+  .poise-flip { width:160px; }
+  .poise-inner { width:160px; padding:5px; }
+  .poise-header { font-size:22px; padding:2px 4px; }
+  .poise-sub    { font-size:9px; }
+  .poise-cover  { height:80px; }
+  .poise-cover-txt { font-size:11px; }
+  .poise-back   { width:160px; height:170px; }
+  .poise-back-label { font-size:15px; padding:4px; }
+  .rec-1 { top:40px;  left:-10px; width:120px; border-width:5px; }
+  .rec-2 { top:340px; right:-10px; width:110px; border-width:5px; }
+  .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
 }
 </style>
 </head>
@@ -424,16 +421,6 @@ html, body {
             <div class="ibig" style="font-size:clamp(32px,8vw,44px);">12h</div>
             <div class="ibsm">almoço de aniversário</div>
           </div>
-        </div>
-      </div>
-
-      <!-- FOOTER -->
-      <div style="text-align:center;">
-        <div class="footer-msg">Vem festejar comigo! 🎉</div>
-        <div class="ftags">
-          <span class="ftag" style="background:#ffd93d;transform:rotate(-2deg);">trinta e tão bem</span>
-          <span class="ftag" style="background:#ff6bbd;color:#fff;transform:rotate(1.5deg);">NADA COMO 30!</span>
-          <span class="ftag" style="background:#c3a8ff;transform:rotate(-1deg);">✦ DE REPENTE 30 ✦</span>
         </div>
       </div>
 
