@@ -319,6 +319,37 @@ html, body {
   .rec-2 { top:340px; right:-10px; width:110px; border-width:5px; }
   .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
 }
+/* ═══════════ INTRO ANIMATION (invitation reveal) ═══════════ */
+/* Hide secondary elements during intro */
+body.intro .syl-cat, body.intro .syl-bear, body.intro .syl-bunny, body.intro .syl-hedgehog,
+body.intro .cosmo, body.intro .rec-1, body.intro .rec-2, body.intro .rec-3,
+body.intro .name-row, body.intro .big30, body.intro .anos,
+body.intro .poise-wrap, body.intro .disco-wrap,
+body.intro .mw, body.intro .tape, body.intro .check, body.intro .spark,
+body.intro .music-btn {
+  opacity:0 !important;
+  pointer-events:none;
+}
+
+/* Emphasize: stag, film-tag, info-grid */
+body.intro .stag         { transform: scale(1.7); }
+body.intro .film-tag     { transform: rotate(-1.5deg) scale(1.7); }
+body.intro .info-grid    { transform: scale(1.35); }
+body.intro .stag,
+body.intro .film-tag,
+body.intro .info-grid    { z-index: 50; filter: drop-shadow(0 8px 24px rgba(0,0,0,.35)); }
+
+/* Smooth transitions for the zoom-out */
+.syl-cat, .syl-bear, .syl-bunny, .syl-hedgehog,
+.cosmo, .rec-1, .rec-2, .rec-3,
+.name-row, .big30, .anos, .poise-wrap, .disco-wrap,
+.mw, .tape, .check, .spark, .music-btn {
+  transition: opacity 1.5s ease-out;
+}
+.stag, .film-tag, .info-grid {
+  transition: transform 1.4s cubic-bezier(.34, 1.2, .3, 1), filter 1.2s ease;
+}
+
 /* ═══════════ MUSIC PLAYER ═══════════ */
 .music-btn{position:fixed;top:18px;right:18px;width:54px;height:54px;background:#ff1055;color:#fff;border:3px solid #111;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;z-index:1000;box-shadow:4px 4px 0 #111;transition:transform .2s ease,background .3s ease;user-select:none;animation:musicPulse 2s ease-in-out infinite;}
 .music-btn:hover{transform:scale(1.1) rotate(-5deg);}
@@ -524,6 +555,12 @@ function fitCard() {
 }
 window.addEventListener('load', fitCard);
 window.addEventListener('resize', fitCard);
+
+/* Invitation reveal — emphasize info, then zoom out to full layout */
+document.body.classList.add('intro');
+window.addEventListener('load', function(){
+  setTimeout(function(){ document.body.classList.remove('intro'); }, 2600);
+});
 </script>
 
 <!-- CONFETTI -->
