@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Joana faz 30!</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&family=Anton&family=Bebas+Neue&family=Pacifico&family=Special+Elite&family=Oswald:wght@700&family=Abril+Fatface&family=Boogaloo&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -85,7 +86,7 @@ html, body {
   position:relative;
   z-index:10;
   display:flex; flex-direction:column; align-items:center;
-  padding:60px 24px 225px;
+  padding:60px 24px 300px;
   width:100%;
   gap:0;
 }
@@ -236,7 +237,7 @@ html, body {
 .poise-inner{background:#f5e8f0;border:3px solid #111;padding:8px;box-shadow:7px 7px 0 #111;width:280px;}
 .poise-header{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:44px;font-weight:900;letter-spacing:2px;text-align:center;padding:4px 6px;border-bottom:2px solid #111;}
 .poise-sub{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;text-align:center;color:#555;margin:3px 0;}
-.poise-cover{background:linear-gradient(135deg,#ffd6e8,#a8edea);height:165px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;}
+.poise-cover{background:linear-gradient(135deg,#ffd6e8,#a8edea);height:240px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;}
 .poise-cover-txt{font-family:'Playfair Display',serif;font-style:italic;font-size:18px;color:#333;text-align:center;padding:4px;line-height:1.4;}
 .poise-cap{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;text-align:center;padding:4px;color:#ff1055;}
 .poise-back{position:absolute;top:0;left:0;width:280px;transform:rotateY(180deg);background:#111;border:3px solid #111;box-shadow:7px 7px 0 #ff1055;overflow:hidden;}
@@ -263,8 +264,8 @@ html, body {
          filter:drop-shadow(4px 6px 10px rgba(0,0,0,.35)); }
 
 /* ═══════════ POISE BACK FIX ═══════════ */
-.poise-back{ height:275px; display:flex; flex-direction:column; }
-.poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:contain; object-position:center; display:block; background:#111; }
+.poise-back{ height:350px; display:flex; flex-direction:column; }
+.poise-back-photo{ flex:1; width:100%; min-height:0; object-fit:cover; object-position:center top; display:block; }
 
 /* ═══════════ RECORTES (film cutouts — behind content) ═══════════ */
 .rec-1,.rec-2,.rec-3{
@@ -284,15 +285,15 @@ html, body {
   .syl-bunny  { width:105px; left:-50px;  top:540px; }
   .syl-hedgehog{ width:100px; right:-50px; top:550px; }
   .cosmo      { width:85px;  right:-18px; top:-10px; }
-  .poise-wrap { left:50%; margin-left:-80px; bottom:-80px; }
-  .poise-flip { width:160px; }
-  .poise-inner { width:160px; padding:5px; }
-  .poise-header { font-size:22px; padding:2px 4px; }
-  .poise-sub    { font-size:9px; }
-  .poise-cover  { height:80px; }
-  .poise-cover-txt { font-size:11px; }
-  .poise-back   { width:160px; height:170px; }
-  .poise-back-label { font-size:15px; padding:4px; }
+  .poise-wrap { left:50%; margin-left:-115px; bottom:-30px; }
+  .poise-flip { width:230px; }
+  .poise-inner { width:230px; padding:7px; }
+  .poise-header { font-size:34px; padding:3px 5px; }
+  .poise-sub    { font-size:11px; }
+  .poise-cover  { height:185px; }
+  .poise-cover-txt { font-size:14px; }
+  .poise-back   { width:230px; height:280px; }
+  .poise-back-label { font-size:20px; padding:6px; }
   .rec-1 { top:40px;  left:-10px; width:120px; border-width:5px; }
   .rec-2 { top:340px; right:-10px; width:110px; border-width:5px; }
   .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
