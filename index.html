@@ -300,6 +300,7 @@ html, body {
 
 /* ═══════════ MOBILE ═══════════ */
 @media(max-width:520px){
+  .content { padding:50px 24px 310px; }
   .syl-cat    { width:115px; left:-55px;  top:80px;  }
   .syl-bear   { width:115px; right:-55px; top:80px;  }
   .syl-bunny  { width:105px; left:-50px;  top:540px; }
@@ -332,12 +333,13 @@ body.intro .music-btn {
 }
 
 /* Emphasize: stag, film-tag, info-grid */
-body.intro .stag         { transform: scale(1.7); }
-body.intro .film-tag     { transform: rotate(-1.5deg) scale(1.7); }
-body.intro .info-grid    { transform: scale(1.35); }
+body.intro .stag         { transform: scale(2.2); }
+body.intro .film-tag     { transform: rotate(-1.5deg) scale(2.2); }
+body.intro .info-grid    { transform: scale(1.55); }
 body.intro .stag,
 body.intro .film-tag,
-body.intro .info-grid    { z-index: 50; filter: drop-shadow(0 8px 24px rgba(0,0,0,.35)); }
+body.intro .info-grid    { z-index: 50; filter: drop-shadow(0 10px 30px rgba(0,0,0,.4)); }
+body.intro #confetti     { opacity: 0; }
 
 /* Smooth transitions for the zoom-out */
 .syl-cat, .syl-bear, .syl-bunny, .syl-hedgehog,
@@ -559,7 +561,7 @@ window.addEventListener('resize', fitCard);
 /* Invitation reveal — emphasize info, then zoom out to full layout */
 document.body.classList.add('intro');
 window.addEventListener('load', function(){
-  setTimeout(function(){ document.body.classList.remove('intro'); }, 2600);
+  setTimeout(function(){ document.body.classList.remove('intro'); }, 4200);
 });
 </script>
 
@@ -693,7 +695,8 @@ class P{
 }
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
-loop();
+// Start the continuous confetti loop AFTER the intro reveal
+setTimeout(loop, 4200);
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -860,9 +863,9 @@ function launchBurst() {
   requestAnimationFrame(animateBurst);
 }
 
-// Fire burst on page load
+// Fire burst AFTER intro reveal, in sync with confetti loop start
 window.addEventListener('load', () => {
-  setTimeout(launchBurst, 100);
+  setTimeout(launchBurst, 4300);
 });
 
 // letter hover wobble
