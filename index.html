@@ -333,9 +333,9 @@ body.intro .music-btn {
 }
 
 /* Emphasize: stag, film-tag, info-grid */
-body.intro .stag         { transform: scale(2.2); }
-body.intro .film-tag     { transform: rotate(-1.5deg) scale(2.2); }
-body.intro .info-grid    { transform: scale(1.55); }
+body.intro .stag         { transform: scale(2.2) translateY(-12px); }
+body.intro .film-tag     { transform: scale(2.2) translateY(14px) rotate(-1.5deg); }
+body.intro .info-grid    { transform: scale(1.55) translateY(20px); }
 body.intro .stag,
 body.intro .film-tag,
 body.intro .info-grid    { z-index: 50; filter: drop-shadow(0 10px 30px rgba(0,0,0,.4)); }
@@ -561,7 +561,7 @@ window.addEventListener('resize', fitCard);
 /* Invitation reveal — emphasize info, then zoom out to full layout */
 document.body.classList.add('intro');
 window.addEventListener('load', function(){
-  setTimeout(function(){ document.body.classList.remove('intro'); }, 4200);
+  setTimeout(function(){ document.body.classList.remove('intro'); }, 6500);
 });
 </script>
 
@@ -696,7 +696,7 @@ class P{
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
 // Start the continuous confetti loop AFTER the intro reveal
-setTimeout(loop, 4200);
+setTimeout(loop, 6500);
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -865,7 +865,7 @@ function launchBurst() {
 
 // Fire burst AFTER intro reveal, in sync with confetti loop start
 window.addEventListener('load', () => {
-  setTimeout(launchBurst, 4300);
+  setTimeout(launchBurst, 6600);
 });
 
 // letter hover wobble
