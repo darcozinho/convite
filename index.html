@@ -255,7 +255,7 @@ html, body {
 .poise-header{background:#ff1055;color:#fff;font-family:'Playfair Display',serif;font-style:italic;font-size:44px;font-weight:900;letter-spacing:2px;text-align:center;padding:4px 6px;border-bottom:2px solid #111;}
 .poise-sub{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;text-align:center;color:#555;margin:3px 0;}
 .poise-cover{position:relative;background:#fff;height:240px;border:1px solid #ddd;overflow:hidden;}
-.poise-cover-photo{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;}
+.poise-cover-photo{width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;}
 .poise-cover-txt{position:absolute;bottom:8px;left:8px;right:8px;font-family:'Playfair Display',serif;font-style:italic;font-size:16px;color:#fff;text-align:left;line-height:1.25;text-shadow:0 2px 4px rgba(0,0,0,.85);padding:0;}
 .poise-cover-txt strong{display:block;font-size:22px;color:#ff1055;text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 1px #fff;letter-spacing:.5px;margin-bottom:2px;}
 .poise-cover-tag{position:absolute;top:8px;right:8px;background:#ffd93d;color:#111;font-family:'Bebas Neue',sans-serif;font-size:10px;letter-spacing:1px;padding:3px 7px;border:2px solid #111;transform:rotate(4deg);box-shadow:2px 2px 0 #111;}
@@ -576,7 +576,7 @@ window.addEventListener('resize', fitCard);
 /* Invitation reveal — emphasize info, then zoom out to full layout */
 document.body.classList.add('intro');
 window.addEventListener('load', function(){
-  setTimeout(function(){ document.body.classList.remove('intro'); }, 5000);
+  setTimeout(function(){ document.body.classList.remove('intro'); }, 4000);
 });
 </script>
 
@@ -711,7 +711,7 @@ class P{
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
 // Start the continuous confetti loop AFTER the intro reveal
-setTimeout(loop, 5000);
+setTimeout(loop, 4000);
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -880,7 +880,7 @@ function launchBurst() {
 
 // Fire burst AFTER intro reveal, in sync with confetti loop start
 window.addEventListener('load', () => {
-  setTimeout(launchBurst, 5100);
+  setTimeout(launchBurst, 4100);
 });
 
 // letter hover wobble
