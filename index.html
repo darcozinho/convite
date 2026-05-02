@@ -324,6 +324,19 @@ html, body {
   .rec-2 { top:340px; right:-10px; width:110px; border-width:5px; }
   .rec-3 { top:350px; left:-10px;  width:115px; border-width:5px; }
 }
+/* ═══════════ PRELOADER ═══════════ */
+#preloader{
+  position:fixed;inset:0;background:#ffd93d;z-index:99999;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .6s ease-out;gap:14px;
+}
+#preloader.hidden{opacity:0;pointer-events:none;}
+.preloader-spark{display:flex;align-items:center;justify-content:center;
+  width:90px;height:90px;font-family:'Boogaloo',cursive;font-size:72px;
+  color:#ff1055;line-height:1;transform-origin:center center;
+  animation:preSpin 1.4s linear infinite;}
+@keyframes preSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
 /* ═══════════ INTRO ANIMATION (invitation reveal) ═══════════ */
 /* Hide decorative elements during intro (keep core invitation info) */
 body.intro .syl-cat, body.intro .syl-bear, body.intro .syl-bunny, body.intro .syl-hedgehog,
@@ -332,15 +345,7 @@ body.intro .poise-wrap, body.intro .disco-wrap,
 body.intro .mw, body.intro .tape, body.intro .check, body.intro .spark,
 body.intro .music-btn {
   opacity:0 !important;
-  visibility:hidden !important;
   pointer-events:none;
-}
-/* Decorations are visible only after intro ends */
-.syl-cat, .syl-bear, .syl-bunny, .syl-hedgehog,
-.cosmo, .rec-1, .rec-2, .rec-3,
-.poise-wrap, .disco-wrap,
-.mw, .tape, .check, .spark, .music-btn {
-  visibility: visible;
 }
 
 /* Emphasize core invitation content: title tags, name, 30, info */
@@ -376,6 +381,9 @@ body.intro #confetti     { opacity: 0; }
 </style>
 </head>
 <body class="intro">
+
+<!-- PRELOADER -->
+<div id="preloader"><div class="preloader-spark">✦</div></div>
 
 <!-- MUSIC BUTTON + YOUTUBE IFRAME API (mobile-friendly) -->
 <div class="music-btn" id="music-btn" onclick="toggleMusic(event)" title="Play music">🎵</div>
@@ -573,10 +581,18 @@ function fitCard() {
 window.addEventListener('load', fitCard);
 window.addEventListener('resize', fitCard);
 
-/* Invitation reveal — emphasize info, then zoom out to full layout */
+/* Preloader → intro reveal → full layout fade-in */
 document.body.classList.add('intro');
 window.addEventListener('load', function(){
-  setTimeout(function(){ document.body.classList.remove('intro'); }, 4000);
+  // Step 1: short delay so layout/fonts/images settle, then hide preloader
+  setTimeout(function(){
+    var pre = document.getElementById('preloader');
+    if(pre) pre.classList.add('hidden');
+    // Step 2: after preloader fade completes, give the user 4s to read the intro
+    setTimeout(function(){ document.body.classList.remove('intro'); }, 4000);
+    // Step 3: cleanup preloader from DOM after fade
+    setTimeout(function(){ if(pre) pre.remove(); }, 700);
+  }, 350);
 });
 </script>
 
@@ -710,8 +726,8 @@ class P{
 }
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
-// Start the continuous confetti loop AFTER the intro reveal
-setTimeout(loop, 4000);
+// Start the continuous confetti loop AFTER the intro reveal (preloader+intro)
+setTimeout(loop, 4400);
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -880,7 +896,7 @@ function launchBurst() {
 
 // Fire burst AFTER intro reveal, in sync with confetti loop start
 window.addEventListener('load', () => {
-  setTimeout(launchBurst, 4100);
+  setTimeout(launchBurst, 4500);
 });
 
 // letter hover wobble
