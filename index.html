@@ -328,12 +328,17 @@ html, body {
 #preloader{
   position:fixed;inset:0;background:#ffd93d;z-index:99999;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .6s ease-out;gap:14px;cursor:pointer;
+  transition:opacity .35s ease-out;gap:24px;cursor:pointer;
 }
 #preloader.hidden{opacity:0;pointer-events:none;}
 .preloader-spark{display:block;width:140px;height:140px;
   background:url('images/bibble.png') center/contain no-repeat;
   transform-origin:center center;animation:preSpin 1.4s linear infinite;}
+.preloader-hint{font-family:'Boogaloo',cursive;font-size:22px;color:#ff1055;
+  background:#fff;border:2.5px solid #111;padding:6px 16px;border-radius:30px;
+  box-shadow:3px 3px 0 #111;letter-spacing:.5px;animation:hintBounce 1.2s ease-in-out infinite;
+  user-select:none;}
+@keyframes hintBounce{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-6px) rotate(2deg);}}
 @keyframes preSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 
 /* ═══════════ INTRO ANIMATION (invitation reveal) ═══════════ */
@@ -382,7 +387,7 @@ body.intro #confetti     { opacity: 0; }
 <body class="intro">
 
 <!-- PRELOADER -->
-<div id="preloader"><div class="preloader-spark" role="img" aria-label="loading"></div></div>
+<div id="preloader"><div class="preloader-spark" role="img" aria-label="loading"></div><div class="preloader-hint">👆 carrega aqui</div></div>
 
 <!-- MUSIC BUTTON + YOUTUBE IFRAME API (mobile-friendly) -->
 <div class="music-btn" id="music-btn" onclick="toggleMusic(event)" title="Play music">🎵</div>
@@ -590,7 +595,7 @@ document.body.classList.add('intro');
     // 1. Start the music (user gesture satisfies mobile autoplay rules)
     if(window.ytPlayer && window.ytReady){ try{ ytPlayer.playVideo(); }catch(e){} }
     else { window.pendingPlay = true; }
-    // 2. Fade out preloader
+    // 2. Fade out preloader immediately
     var pre = document.getElementById('preloader');
     if(pre) pre.classList.add('hidden');
     // 3. Reading time, then zoom out and reveal full layout + confetti
@@ -600,14 +605,13 @@ document.body.classList.add('intro');
       if(typeof launchBurst === 'function') launchBurst();
     }, 4000);
     // 4. Cleanup preloader
-    setTimeout(function(){ if(pre) pre.remove(); }, 700);
+    setTimeout(function(){ if(pre) pre.remove(); }, 400);
   }
   function arm(){
     document.addEventListener('click', startExperience, {once:true, capture:true});
     document.addEventListener('touchstart', startExperience, {once:true, capture:true, passive:true});
     document.addEventListener('keydown', startExperience, {once:true, capture:true});
   }
-  // Wait for window load so layout/fonts/images settle, then arm interaction
   if(document.readyState === 'complete') arm();
   else window.addEventListener('load', arm);
 })();
