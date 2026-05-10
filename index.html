@@ -77,17 +77,16 @@ html, body {
   top:-90px; left:50%; transform:translateX(-50%);
   z-index:35;
   display:flex; flex-direction:column; align-items:center;
-  animation:discoFloat 4s ease-in-out infinite;
 }
-@keyframes discoFloat{0%,100%{transform:translateX(-50%) translateY(0) rotate(-1deg)}50%{transform:translateX(-50%) translateY(-12px) rotate(1deg)}}
 .disco-string{width:2px;height:50px;background:linear-gradient(to bottom,#888,#ccc);margin:0 auto;box-shadow:0 0 4px rgba(255,255,255,.5);}
-/* Light rays radiating from the disco ball */
+/* Light rays radiating from the disco ball — centered on the ball */
 .disco-rays{
   position:absolute;
-  top:30px;left:50%;
+  /* Ball center = string height (50px) + half of ball height (clamp 80–115px) */
+  top:calc(50px + clamp(80px,16vw,115px) / 2);
+  left:50%;
   width:clamp(380px,55vw,600px);
   aspect-ratio:1;
-  margin-left:calc(clamp(380px,55vw,600px) / -2);
   pointer-events:none;
   z-index:30;
   background:conic-gradient(
@@ -110,10 +109,12 @@ html, body {
   mask:radial-gradient(circle, transparent 0%, transparent 14%, black 22%, black 55%, transparent 85%);
   mix-blend-mode:screen;
   filter:blur(6px) saturate(1.4);
+  transform:translate(-50%,-50%);
+  transform-origin:center center;
   animation:discoRays 14s linear infinite;
   border-radius:50%;
 }
-@keyframes discoRays{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+@keyframes discoRays{from{transform:translate(-50%,-50%) rotate(0);}to{transform:translate(-50%,-50%) rotate(360deg);}}
 .disco-ball{
   width:clamp(80px,16vw,115px); height:clamp(80px,16vw,115px);
   object-fit:contain;
