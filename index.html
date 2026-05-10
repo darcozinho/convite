@@ -328,7 +328,7 @@ html, body {
 #preloader{
   position:fixed;inset:0;background:#ffd93d;z-index:99999;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  transition:opacity .6s ease-out;gap:14px;
+  transition:opacity .6s ease-out;gap:14px;cursor:pointer;
 }
 #preloader.hidden{opacity:0;pointer-events:none;}
 .preloader-spark{display:block;width:140px;height:140px;
@@ -580,19 +580,37 @@ function fitCard() {
 window.addEventListener('load', fitCard);
 window.addEventListener('resize', fitCard);
 
-/* Preloader → intro reveal → full layout fade-in */
+/* Preloader stays until first user tap → music + intro start together */
 document.body.classList.add('intro');
-window.addEventListener('load', function(){
-  // Step 1: short delay so layout/fonts/images settle, then hide preloader
-  setTimeout(function(){
+(function(){
+  var started = false;
+  function startExperience(){
+    if(started) return;
+    started = true;
+    // 1. Start the music (user gesture satisfies mobile autoplay rules)
+    if(window.ytPlayer && window.ytReady){ try{ ytPlayer.playVideo(); }catch(e){} }
+    else { window.pendingPlay = true; }
+    // 2. Fade out preloader
     var pre = document.getElementById('preloader');
     if(pre) pre.classList.add('hidden');
-    // Step 2: after preloader fade completes, give the user 4s to read the intro
-    setTimeout(function(){ document.body.classList.remove('intro'); }, 4000);
-    // Step 3: cleanup preloader from DOM after fade
+    // 3. Reading time, then zoom out and reveal full layout + confetti
+    setTimeout(function(){
+      document.body.classList.remove('intro');
+      if(typeof loop === 'function') loop();
+      if(typeof launchBurst === 'function') launchBurst();
+    }, 4000);
+    // 4. Cleanup preloader
     setTimeout(function(){ if(pre) pre.remove(); }, 700);
-  }, 350);
-});
+  }
+  function arm(){
+    document.addEventListener('click', startExperience, {once:true, capture:true});
+    document.addEventListener('touchstart', startExperience, {once:true, capture:true, passive:true});
+    document.addEventListener('keydown', startExperience, {once:true, capture:true});
+  }
+  // Wait for window load so layout/fonts/images settle, then arm interaction
+  if(document.readyState === 'complete') arm();
+  else window.addEventListener('load', arm);
+})();
 </script>
 
 <!-- CONFETTI -->
@@ -725,8 +743,7 @@ class P{
 }
 const pieces=Array.from({length:50},(_,i)=>new P(true));
 function loop(){ctx.clearRect(0,0,canvas.width,canvas.height);pieces.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
-// Start the continuous confetti loop AFTER the intro reveal (preloader+intro)
-setTimeout(loop, 4400);
+// Confetti loop started by startExperience() after intro reveal
 
 // ═══ OPENING BURST — MEGA EDITION ═══
 function launchBurst() {
@@ -893,10 +910,7 @@ function launchBurst() {
   requestAnimationFrame(animateBurst);
 }
 
-// Fire burst AFTER intro reveal, in sync with confetti loop start
-window.addEventListener('load', () => {
-  setTimeout(launchBurst, 4500);
-});
+// launchBurst fired by startExperience() in sync with confetti loop
 
 // letter hover wobble
 document.querySelectorAll('.lt').forEach(el=>{el.addEventListener('mouseenter',()=>{let n=0;const iv=setInterval(()=>{el.style.transform=`rotate(${n%2===0?rnd(6,14)*-1:rnd(6,14)}deg) scale(1.1)`;if(++n>5){clearInterval(iv);el.style.transform='';}},70);});});
