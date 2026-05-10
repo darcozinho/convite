@@ -78,6 +78,7 @@ html, body {
   z-index:35;
   display:flex; flex-direction:column; align-items:center;
 }
+@keyframes ballFloat{0%,100%{transform:translateY(0) rotate(-1deg);}50%{transform:translateY(-12px) rotate(1deg);}}
 .disco-string{width:2px;height:50px;background:linear-gradient(to bottom,#888,#ccc);margin:0 auto;box-shadow:0 0 4px rgba(255,255,255,.5);}
 /* Light rays radiating from the disco ball — centered on the ball */
 .disco-rays{
@@ -109,6 +110,7 @@ html, body {
   mask:radial-gradient(circle, transparent 0%, transparent 14%, black 22%, black 55%, transparent 85%);
   mix-blend-mode:screen;
   filter:blur(6px) saturate(1.4);
+  opacity:0.9;
   transform:translate(-50%,-50%);
   transform-origin:center center;
   animation:discoRays 14s linear infinite;
@@ -119,7 +121,7 @@ html, body {
   width:clamp(80px,16vw,115px); height:clamp(80px,16vw,115px);
   object-fit:contain;
   filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 15px rgba(200,200,255,.4));
-  animation:discoSpin 8s linear infinite;
+  animation:discoSpin 8s linear infinite, ballFloat 4s ease-in-out infinite;
 }
 @keyframes discoSpin{0%{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 15px rgba(255,200,200,.5)) brightness(1);}25%{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 20px rgba(200,255,200,.6)) brightness(1.1);}50%{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 15px rgba(200,200,255,.5)) brightness(1.05);}75%{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 20px rgba(255,200,255,.6)) brightness(1.1);}100%{filter:drop-shadow(0 8px 20px rgba(0,0,0,.5)) drop-shadow(0 0 15px rgba(255,200,200,.5)) brightness(1);}}
 
