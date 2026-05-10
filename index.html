@@ -331,10 +331,9 @@ html, body {
   transition:opacity .6s ease-out;gap:14px;
 }
 #preloader.hidden{opacity:0;pointer-events:none;}
-.preloader-spark{display:flex;align-items:center;justify-content:center;
-  width:90px;height:90px;font-family:'Boogaloo',cursive;font-size:72px;
-  color:#ff1055;line-height:1;transform-origin:center center;
-  animation:preSpin 1.4s linear infinite;}
+.preloader-spark{display:block;width:140px;height:140px;
+  background:url('images/bibble.png') center/contain no-repeat;
+  transform-origin:center center;animation:preSpin 1.4s linear infinite;}
 @keyframes preSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
 
 /* ═══════════ INTRO ANIMATION (invitation reveal) ═══════════ */
@@ -383,7 +382,7 @@ body.intro #confetti     { opacity: 0; }
 <body class="intro">
 
 <!-- PRELOADER -->
-<div id="preloader"><div class="preloader-spark">✦</div></div>
+<div id="preloader"><div class="preloader-spark" role="img" aria-label="loading"></div></div>
 
 <!-- MUSIC BUTTON + YOUTUBE IFRAME API (mobile-friendly) -->
 <div class="music-btn" id="music-btn" onclick="toggleMusic(event)" title="Play music">🎵</div>
